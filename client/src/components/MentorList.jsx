@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 
 const MentorList = ({ selectedCategory, onBookClick }) => {
   const [mentors, setMentors] = useState([]);
@@ -10,7 +10,7 @@ const MentorList = ({ selectedCategory, onBookClick }) => {
   useEffect(() => {
     const fetchMentors = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/users/mentors');
+        const res = await api.get('/api/users/mentors');
         setMentors(res.data);
       } catch (error) {
         console.warn('API unavailable, using mock data');

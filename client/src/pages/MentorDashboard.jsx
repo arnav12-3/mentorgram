@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import axios from 'axios';
+import api from '../api';
 import { Calendar, Clock, DollarSign, Star, Users, Video, Save, Plus, Trash2 } from 'lucide-react';
 
 const MentorDashboard = ({ user, onLogout }) => {
@@ -17,7 +17,7 @@ const MentorDashboard = ({ user, onLogout }) => {
         if (user?._id) {
             const fetchBookings = async () => {
                 try {
-                    const res = await axios.get(`http://localhost:5000/api/bookings/mentor/${user._id}`);
+                    const res = await api.get(`/api/bookings/mentor/${user._id}`);
                     setActiveBookings(res.data);
 
                     // Calculate basic stats

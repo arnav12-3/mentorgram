@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { X, Calendar, Clock, Video, User } from 'lucide-react';
-import axios from 'axios';
+import api from '../../api';
 
 const UserBookingsModal = ({ isOpen, onClose, user }) => {
     const [bookings, setBookings] = useState([]);
@@ -10,7 +10,7 @@ const UserBookingsModal = ({ isOpen, onClose, user }) => {
         if (isOpen && user) {
             const fetchBookings = async () => {
                 try {
-                    const res = await axios.get(`http://localhost:5000/api/bookings/user/${user._id}`);
+                    const res = await api.get(`/api/bookings/user/${user._id}`);
                     setBookings(res.data);
                 } catch (error) {
                     console.warn('Failed to fetch bookings, using mock data if needed');

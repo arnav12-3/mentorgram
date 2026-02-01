@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api';
 import Navbar from '../components/Navbar';
 // Just use simple alert for immediate feedback
 import Hero from '../components/Hero';
@@ -83,7 +83,7 @@ const Home = ({ user, onLogin, onLogout }) => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/bookings', {
+      await api.post('/api/bookings', {
         mentor: bookingData.mentor._id || bookingData.mentor.id,
         user: user._id,
         date: bookingData.date,

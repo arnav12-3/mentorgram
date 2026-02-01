@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { X, Mail, Phone, Lock, User } from 'lucide-react';
-import axios from 'axios';
+import { X, Mail, Lock, User, Briefcase, ArrowRight } from 'lucide-react';
+import api from '../../api';
 
 const AuthModal = ({ isOpen, onClose, onLogin }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -22,9 +22,9 @@ const AuthModal = ({ isOpen, onClose, onLogin }) => {
 
       let res;
       if (isLogin) {
-        res = await axios.post('http://localhost:5000/api/auth/login', { email, password, role });
+        res = await api.post('/api/auth/login', { email, password, role });
       } else {
-        res = await axios.post('http://localhost:5000/api/auth/register', { name, email, password, role });
+        res = await api.post('/api/auth/register', { name, email, password, role });
       }
 
       onLogin(res.data);
