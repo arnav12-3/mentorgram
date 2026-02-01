@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-insta-orange: #F58529;
+  --color-insta-pink: #DD2A7B;
+  --color-insta-purple: #8134AF;
+  --color-insta-blue: #515BD4;
+
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+  --animate-scale-up: scaleUp 0.3s ease-out forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleUp {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F8FAFC;
+}
+
+@utility insta-gradient-bg {
+  background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+}
+
+@utility insta-gradient-text {
+  background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
